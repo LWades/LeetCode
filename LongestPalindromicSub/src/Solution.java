@@ -6,50 +6,51 @@ import java.util.Scanner;
 public class Solution
 {
 
-/*
- * Brute Force
- */
-//    public static String longestPalindrome(String s)
-//    {
-//        if (null == s)
-//            return null;
-//
-//        String result = null;
-//        int n = s.length();
-//        int max = 0;
-//        for (int i = 0; i < n; i++)
-//        {
-//            for (int j = n - 1; j >= i; j--)
-//            {
-//                if (isPalindrome(s.substring(i, j+1)) && (j - i + 1) > max)
-//                {
-//                    max = j - i + 1;
-//                    if (i == j)
-//                        result = String.valueOf(s.charAt(i));
-//                    else
-//                        result = s.substring(i, j+1);
-//                }
-//            }
-//        }
-//
-//        return result;
-//    }
-//public static boolean isPalindrome(String src)
-//{
-//    if (null == src)
-//    {
-//        System.out.println("src is null");
-//        return false;
-//    }
-//
-//    int n = src.length();
-//    for (int i = 0, j = n - 1; i <= j; i++, j--)
-//    {
-//        if (src.charAt(i) != src.charAt(j))
-//            return false;
-//    }
-//    return true;
-//}
+    /*
+    * Brute Force
+    */
+    public static String longestPalindrome2(String s)
+    {
+        if (null == s)
+            return null;
+
+        String result = null;
+        int n = s.length();
+        int max = 0;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = n - 1; j >= i; j--)
+            {
+                if (isPalindrome(s.substring(i, j+1)) && (j - i + 1) > max)
+                {
+                    max = j - i + 1;
+                    if (i == j)
+                        result = String.valueOf(s.charAt(i));
+                    else
+                        result = s.substring(i, j+1);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static boolean isPalindrome(String src)
+    {
+        if (null == src)
+        {
+            System.out.println("src is null");
+            return false;
+        }
+
+        int n = src.length();
+        for (int i = 0, j = n - 1; i <= j; i++, j--)
+        {
+            if (src.charAt(i) != src.charAt(j))
+                return false;
+        }
+        return true;
+    }
 
 
     /*
@@ -58,6 +59,7 @@ public class Solution
      * 满足条件便记录下来长度，最后取最大的然后这是就可以计算如何截取字符串的收尾index
      * 截取字符串返回
      * bingo
+     * 注意：扩展中心分两种情况，只有一个字母和两个相同字母
      */
 
     public static String longestPalindrome(String src)
@@ -99,7 +101,16 @@ public class Solution
         return src.substring(start, end);
     }
 
+    /*
+     * Approach 1
+     * 翻转字符串找出最长的公共字串
+     * 注意：有可能存在非回文的翻转字符串单元
+     * 所以要检查一下翻转之后公共字串的下标是否符合要求
+     */
+    public static void longestPalindrome3(String src)
+    {
 
+    }
 
     public static void main (String[] args)
     {
